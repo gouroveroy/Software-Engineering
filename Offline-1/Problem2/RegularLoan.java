@@ -1,0 +1,13 @@
+public class RegularLoan implements Loan {
+    private double interest = 14;
+
+    @Override
+    public double calculateSimpleInterest(double amount, int timePeriod) {
+        return (amount * interest * timePeriod) / 100;
+    }
+
+    @Override
+    public double calculateCompoundInterest(double amount, int timePeriod, int compoundedPerYear) {
+        return amount * Math.pow(1 + interest / (compoundedPerYear * 100), compoundedPerYear * timePeriod) - amount;
+    }
+}

@@ -18,14 +18,14 @@ public class TicketingSystemDirector {
         WebServer framework = WebServerFactory.createFrameWork(frameWorkOption);
 
         return builder
-                .withMicroController(microController)
-                .withDisplay(display)
-                .withIdentification(identification)
-                .withPaymentTerminal(paymentTerminal)
-                .withInternet(internet)
-                .withStorage(storage)
-                .withController(controller)
-                .withFramework(framework)
+                .addMicroController(microController)
+                .addDisplay(display)
+                .addIdentification(identification)
+                .addPaymentTerminal(paymentTerminal)
+                .addInternet(internet)
+                .addStorage(storage)
+                .addController(controller)
+                .addFrameWork(framework)
                 .build();
     }
 }

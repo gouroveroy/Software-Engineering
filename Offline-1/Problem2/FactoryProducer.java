@@ -1,15 +1,16 @@
 public class FactoryProducer {
-    public static CustomerFactory getFactory(String customerType) {
-        switch (customerType) {
-            case "Regular":
-                return new RegularCustomerFactory();
+    public static AbstractFactory getFactory(String factoryType) {
+        if (factoryType == null) {
+            return null;
+        }
 
-            case "Premium":
-                return new PremiumCustomerFactory();
+        switch (factoryType) {
+            case "Account":
+                return new AccountFactory();
 
-            case "VIP":
-                return new VIPCustomerFactory();
-        
+            case "Loan":
+                return new LoanFactory();
+
             default:
                 return null;
         }

@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class TicketingSystemBuilder {
+public class TicketingSystemBuilder implements Builder {
     private MicroController microController;
     private Display display;
     private Identification identification;
@@ -11,42 +11,42 @@ public class TicketingSystemBuilder {
     private WebServer framework;
     ArrayList<String> system = new ArrayList<>();
 
-    public TicketingSystemBuilder withMicroController(MicroController microController) {
+    public TicketingSystemBuilder addMicroController(MicroController microController) {
         this.microController = microController;
         return this;
     }
 
-    public TicketingSystemBuilder withDisplay(Display display) {
+    public TicketingSystemBuilder addDisplay(Display display) {
         this.display = display;
         return this;
     }
 
-    public TicketingSystemBuilder withIdentification(Identification identification) {
+    public TicketingSystemBuilder addIdentification(Identification identification) {
         this.identification = identification;
         return this;
     }
 
-    public TicketingSystemBuilder withPaymentTerminal(PaymentTerminal paymentTerminal) {
+    public TicketingSystemBuilder addPaymentTerminal(PaymentTerminal paymentTerminal) {
         this.paymentTerminal = paymentTerminal;
         return this;
     }
 
-    public TicketingSystemBuilder withInternet(Internet internet) {
+    public TicketingSystemBuilder addInternet(Internet internet) {
         this.internet = internet;
         return this;
     }
 
-    public TicketingSystemBuilder withStorage(Storage storage) {
+    public TicketingSystemBuilder addStorage(Storage storage) {
         this.storage = storage;
         return this;
     }
 
-    public TicketingSystemBuilder withController(Controller controller) {
+    public TicketingSystemBuilder addController(Controller controller) {
         this.controller = controller;
         return this;
     }
 
-    public TicketingSystemBuilder withFramework(WebServer framework) {
+    public TicketingSystemBuilder addFrameWork(WebServer framework) {
         this.framework = framework;
         return this;
     }

@@ -109,6 +109,7 @@ public class TicketingSystem {
             for (String component : system) {
                 System.out.println(component);
             }
+            scanner.close();
         }
     }
 }

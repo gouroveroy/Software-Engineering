@@ -5,11 +5,14 @@ public class FactoryProducer {
         }
 
         switch (factoryType) {
-            case "Account":
-                return new AccountFactory();
+            case "Regular":
+                return new RegularFactory();
 
-            case "Loan":
-                return new LoanFactory();
+            case "Premium":
+                return new PremiumFactory();
+
+            case "VIP":
+                return new VIPFactory();
 
             default:
                 return null;

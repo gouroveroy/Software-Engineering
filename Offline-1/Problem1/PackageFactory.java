@@ -1,16 +1,13 @@
 public class PackageFactory {
-    public static MicroController createMicroController(String packageType) {
-        switch (packageType) {
-            case "Basic":
+    public static MicroController createMicroController(String microControllerName) {
+        switch (microControllerName) {
+            case "ATMega32":
                 return new ATMega32();
 
-            case "Standard":
+            case "Arduino":
                 return new Arduino();
 
-            case "Advanced":
-                return new RaspBerryPi();
-
-            case "Premium":
+            case "RaspberryPi":
                 return new RaspBerryPi();
 
             default:
@@ -18,18 +15,18 @@ public class PackageFactory {
         }
     }
 
-    public static Display createDisplay(String packageType) {
-        switch (packageType) {
-            case "Basic":
+    public static Display createDisplay(String displayName) {
+        switch (displayName) {
+            case "LCD":
                 return new LCD();
 
-            case "Standard":
+            case "LED":
                 return new LED();
 
-            case "Advanced":
+            case "OLED":
                 return new OLED();
 
-            case "Premium":
+            case "TouchScreen":
                 return new TouchScreen();
 
             default:
@@ -37,18 +34,12 @@ public class PackageFactory {
         }
     }
 
-    public static Identification createIdentification(String packageType) {
-        switch (packageType) {
-            case "Basic":
+    public static Identification createIdentification(String identificationStyle) {
+        switch (identificationStyle) {
+            case "RFID":
                 return new RFID();
 
-            case "Standard":
-                return new RFID();
-
-            case "Advanced":
-                return new NFC();
-
-            case "Premium":
+            case "NFC":
                 return new NFC();
 
             default:
@@ -56,22 +47,22 @@ public class PackageFactory {
         }
     }
 
-    public static PaymentTerminal createPaymentTerminal(String packageType) {
-        return new CashPaymentTerminal();
+    public static PaymentTerminal createPaymentTerminal(String paymentMethod) {
+        switch (paymentMethod) {
+            case "Cash":
+                return new CashPaymentTerminal();
+        
+            default:
+                return null;
+        }
     }
 
-    public static Storage createStorage(String packageType) {
-        switch (packageType) {
-            case "Basic":
+    public static Storage createStorage(String storageType) {
+        switch (storageType) {
+            case "SDcard":
                 return new SDCardStorage();
 
-            case "Standard":
-                return new SDCardStorage();
-
-            case "Advanced":
-                return new OnBoardStorage();
-
-            case "Premium":
+            case "OnBoard":
                 return new OnBoardStorage();
 
             default:
@@ -79,18 +70,12 @@ public class PackageFactory {
         }
     }
 
-    public static Controller createController(String packageType) {
-        switch (packageType) {
-            case "Basic":
+    public static Controller createController(String controllerType) {
+        switch (controllerType) {
+            case "Separate":
                 return new SeparateController();
 
-            case "Standard":
-                return new SeparateController();
-
-            case "Advanced":
-                return new TouchScreenController();
-
-            case "Premium":
+            case "TouchScreen":
                 return new TouchScreenController();
 
             default:

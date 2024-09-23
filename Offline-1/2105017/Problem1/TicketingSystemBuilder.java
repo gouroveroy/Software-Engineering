@@ -52,37 +52,21 @@ public class TicketingSystemBuilder implements Builder {
     }
 
     public ArrayList<String> build() {
-        if (microController != null) {
-            system.add(microController.addMicroController());
-        }
+        system.add(microController.addMicroController());
 
-        if (display != null) {
-            system.add(display.addDisplay());
-        }
+        system.add(display.addDisplay());
 
-        if (identification != null) {
-            system.add(identification.addTicketingSystem());
-        }
+        system.add(identification.addTicketingSystem());
 
-        if (paymentTerminal != null) {
-            system.add(paymentTerminal.addPaymentTerminal());
-        }
+        system.add(paymentTerminal.addPaymentTerminal());
 
-        if (internet != null) {
-            system.add(internet.addInternetConnection());
-        }
+        system.add(internet.addInternetConnection());
 
-        if (storage != null) {
-            system.add(storage.addStorage());
-        }
+        system.add(storage.addStorage());
 
-        if (controller != null) {
-            system.add(controller.addController());
-        }
+        system.add(controller.addController());
 
-        if (framework != null) {
-            system.add(framework.addFrameWork());
-        }
+        system.add(framework.addFrameWork());
 
         return system;
     }

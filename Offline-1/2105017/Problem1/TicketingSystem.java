@@ -76,10 +76,10 @@ public class TicketingSystem {
     public static void main(String[] args) {
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.println("The company offers four packages. They are: ");
-            System.out.println("1. Basic");
-            System.out.println("2. Standard");
-            System.out.println("3. Advanced");
-            System.out.println("4. Premium");
+            System.out.println("1. Basic: ATMega32 with LCD display");
+            System.out.println("2. Standard: Arduino Mega with LED display");
+            System.out.println("3. Advanced: Raspberry Pi with OLED display");
+            System.out.println("4. Premium: Raspberry Pi with touch screen display");
             System.out.println("Enter the package type(1/2/3/4): ");
             int option = scanner.nextInt();
             String packageType = selectPackage(option);

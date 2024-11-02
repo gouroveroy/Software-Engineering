@@ -11,17 +11,12 @@ public class Item implements Menu {
 
     @Override
     public String getName() {
-        return this.name;
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
+        return name;
     }
 
     @Override
     public int getPrice() {
-        return this.price;
+        return price;
     }
 
     @Override
@@ -30,22 +25,22 @@ public class Item implements Menu {
     }
 
     @Override
-    public void setDiscountPercentage(float discountPercentage) {
-
+    public void setDiscountPercentage(int discountPercentage) {
+        // Not applicable for individual items
     }
 
     @Override
-    public void add(Menu item) {
-
+    public void add(Menu item, boolean isFree) {
+        // Not applicable for individual items
     }
 
     @Override
     public void remove(Menu item) {
-
+        // Not applicable for individual items
     }
 
     @Override
     public void print() {
-        System.out.println(this.name + " - " + price + "tk");
+        System.out.println(name + " - " + price + "tk");
     }
 }

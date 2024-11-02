@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Composite.*;
-import Decorator.*;
 
 public class KhaidaiBistro {
     private static List<Menu> menu = new ArrayList<>();
@@ -32,38 +31,18 @@ public class KhaidaiBistro {
         Menu combo = new Combo(name, 0);
         displayCommands();
 
-        boolean condition = true;
-        while (condition) {
-            String command = scanner.nextLine();
-            String[] tokens = command.split(" ", 2);
+        while (true) {
+            String[] tokens = scanner.nextLine().split(" ", 2);
+            if (tokens[0].equalsIgnoreCase("Done"))
+                break;
             Menu item = tokens.length > 1 ? findMenuItemByName(tokens[1]) : null;
 
             switch (tokens[0]) {
-                case "Add":
-                    if (item != null)
-                        combo.add(item);
-                    break;
-
-                case "Remove":
-                    if (item != null)
-                        combo.remove(item);
-                    break;
-
-                case "Free":
-                    if (item != null)
-                        combo = new FreeItemDecorator(combo, item);
-                    break;
-
-                case "Discount":
-                    combo.setDiscountPercentage(Float.parseFloat(tokens[1]));
-                    break;
-
-                case "Done":
-                    condition = false;
-                    break;
-
-                default:
-                    System.out.println("Invalid command");
+                case "Add" -> combo.add(item, false);
+                case "Remove" -> combo.remove(item);
+                case "Free" -> combo.add(item, true);
+                case "Discount" -> combo.setDiscountPercentage(Integer.parseInt(tokens[1]));
+                default -> System.out.println("Invalid command");
             }
         }
         System.out.println("Your combo:\n\n" + name);
@@ -73,9 +52,7 @@ public class KhaidaiBistro {
 
     public static void viewMenu() {
         System.out.println("\033[1mMenu\033[0m:\n");
-        for (Menu item : menu) {
-            System.out.println(item.getName() + " - " + item.getPrice() + "tk");
-        }
+        menu.forEach(item -> System.out.println(item.getName() + " - " + item.getPrice() + "tk"));
     }
 
     public static void main(String[] args) {
@@ -86,13 +63,13 @@ public class KhaidaiBistro {
         Menu Drink = new Item("Drink", 25);
 
         Menu Combo1 = new Combo("Combo1", 400);
-        Combo1.add(Burger);
-        Combo1.add(Fries);
-        Combo1.add(Drink);
+        Combo1.add(Burger, false);
+        Combo1.add(Fries, false);
+        Combo1.add(Drink, false);
 
         Menu Combo2 = new Combo("Combo2", 215);
-        Combo2.add(Shawarma);
-        Combo2.add(Drink);
+        Combo2.add(Shawarma, false);
+        Combo2.add(Drink, false);
 
         menu.addAll(List.of(Burger, Fries, Wedges, Shawarma, Drink, Combo1, Combo2));
 
@@ -101,23 +78,14 @@ public class KhaidaiBistro {
             boolean condition = true;
             while (condition) {
                 System.out.println("\nPress 1 to create a combo, 2 to view menu, and 0 to exit");
-                int choice = scanner.nextInt();
-                scanner.nextLine();
-                switch (choice) {
-                    case 0:
-                        condition = false;
-                        break;
-
-                    case 1:
+                switch (scanner.nextInt()) {
+                    case 0 -> condition = false;
+                    case 1 -> {
+                        scanner.nextLine();
                         createCombo(scanner);
-                        break;
-
-                    case 2:
-                        viewMenu();
-                        break;
-
-                    default:
-                        System.out.println("Invalid choice");
+                    }
+                    case 2 -> viewMenu();
+                    default -> System.out.println("Invalid choice");
                 }
             }
         }

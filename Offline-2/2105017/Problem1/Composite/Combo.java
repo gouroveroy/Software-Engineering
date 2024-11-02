@@ -5,9 +5,10 @@ import java.util.ArrayList;
 
 public class Combo implements Menu {
     private List<Menu> items = new ArrayList<Menu>();
+    private List<Menu> freeItems = new ArrayList<Menu>();
     private String name;
     private int price;
-    private float discountPercentage;
+    private int discountPercentage = 0;
 
     public Combo(String name, int price) {
         this.name = name;
@@ -18,15 +19,11 @@ public class Combo implements Menu {
     public String getName() {
         StringBuilder itemNames = new StringBuilder();
         items.forEach(item -> itemNames.append(item.getName()).append(" + "));
+        freeItems.forEach(item -> itemNames.append(item.getName() + " (Free!!!)").append(" + "));
         if (itemNames.length() > 0) {
             itemNames.setLength(itemNames.length() - 3);
         }
         return this.name + (itemNames.length() > 0 ? " (" + itemNames + ")" : "");
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
     }
 
     @Override
@@ -38,7 +35,8 @@ public class Combo implements Menu {
         for (Menu item : items) {
             previousPrice += item.getPrice();
         }
-        return previousPrice;
+        this.setPrice((int) Math.ceil(previousPrice * (1 - discountPercentage / 100.0)));
+        return this.price;
     }
 
     @Override
@@ -46,33 +44,28 @@ public class Combo implements Menu {
         this.price = price;
     }
 
-    public void setDiscountPercentage(float discountPercentage) {
+    public void setDiscountPercentage(int discountPercentage) {
         this.discountPercentage = discountPercentage;
     }
 
     @Override
-    public void add(Menu item) {
-        items.add(item);
+    public void add(Menu item, boolean isFree) {
+        (isFree ? freeItems : items).add(item);
     }
 
     @Override
     public void remove(Menu item) {
-        items.remove(item);
+        if (!items.remove(item)) {
+            freeItems.remove(item);
+        }
     }
 
     @Override
     public void print() {
-        for (Menu item : items) {
-            System.out.println("   -  " + item.getName());
-        }
-        int previousPrice = this.getPrice();
-        System.out.println("Total - " + previousPrice);
-        if (discountPercentage == (int) discountPercentage) {
-            System.out.println("Discount - " + (int) discountPercentage + "%");
-        } else {
-            System.out.println("Discount - " + discountPercentage + "%");
-        }
-        System.out.println("Discounted total - "
-                + (int) (Math.ceil(previousPrice - (previousPrice * discountPercentage / 100))) + "tk");
+        items.forEach(item -> System.out.println("   -  " + item.getName()));
+        freeItems.forEach(item -> System.out.println("   -  " + item.getName() + " (Free!!!)"));
+        System.out.println("Total - " + (int) Math.ceil(items.stream().mapToInt(Menu::getPrice).sum()));
+        System.out.println("Discount - " + discountPercentage + "%");
+        System.out.println("Discounted total - " + getPrice() + "tk");
     }
 }

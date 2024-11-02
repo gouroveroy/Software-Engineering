@@ -1,19 +1,17 @@
 package Composite;
 
 public interface Menu {
-    public void setName(String name);
+    String getName();
 
-    public void setPrice(int price);
+    void setPrice(int price);
 
-    public String getName();
+    int getPrice();
 
-    public int getPrice();
+    void setDiscountPercentage(int discountPercentage);
 
-    public void setDiscountPercentage(float discountPercentage);
+    void add(Menu item, boolean isFree);
 
-    public void add(Menu item);
+    void remove(Menu item);
 
-    public void remove(Menu item);
-
-    public abstract void print();
+    void print();
 }

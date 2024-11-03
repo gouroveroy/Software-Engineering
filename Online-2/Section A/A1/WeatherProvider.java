@@ -1,0 +1,3 @@
+interface WeatherProvider {
+    String fetchWeather();
+}

@@ -101,7 +101,7 @@ public class TicketingSystem {
             option = scanner.nextInt();
             String frameWorkOption = selectFrameworkOption(option);
 
-            TicketingSystemBuilder builder = new TicketingSystemBuilder();
+            Builder builder = new TicketingSystemBuilder();
             TicketingSystemDirector director = new TicketingSystemDirector(builder);
 
             ArrayList<String> system = director.buildTicketingSystem(packageType, internetOption, frameWorkOption);

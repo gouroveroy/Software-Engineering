@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public interface Builder {
     public TicketingSystemBuilder addMicroController(MicroController microController);
 
@@ -14,4 +16,6 @@ public interface Builder {
     public TicketingSystemBuilder addController(Controller controller);
 
     public TicketingSystemBuilder addFrameWork(WebServer frameWork);
+
+    public ArrayList<String> build();
 }

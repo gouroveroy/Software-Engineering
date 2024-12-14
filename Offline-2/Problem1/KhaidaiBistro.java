@@ -28,7 +28,7 @@ public class KhaidaiBistro {
     public static void createCombo(Scanner scanner) {
         System.out.println("Enter the name of the combo:");
         String name = scanner.nextLine();
-        Menu combo = new Combo(name, 0);
+        Combo combo = new Combo(name, 0);
         displayCommands();
 
         while (true) {
@@ -62,12 +62,12 @@ public class KhaidaiBistro {
         Menu Shawarma = new Item("Shawarma", 200);
         Menu Drink = new Item("Drink", 25);
 
-        Menu Combo1 = new Combo("Combo1", 400);
+        Combo Combo1 = new Combo("Combo1", 400);
         Combo1.add(Burger, false);
         Combo1.add(Fries, false);
         Combo1.add(Drink, false);
 
-        Menu Combo2 = new Combo("Combo2", 215);
+        Combo Combo2 = new Combo("Combo2", 215);
         Combo2.add(Shawarma, false);
         Combo2.add(Drink, false);
 

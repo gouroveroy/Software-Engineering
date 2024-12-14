@@ -11,46 +11,55 @@ public class TicketingSystemBuilder implements Builder {
     private WebServer framework;
     ArrayList<String> system = new ArrayList<>();
 
+    @Override
     public TicketingSystemBuilder addMicroController(MicroController microController) {
         this.microController = microController;
         return this;
     }
 
+    @Override
     public TicketingSystemBuilder addDisplay(Display display) {
         this.display = display;
         return this;
     }
 
+    @Override
     public TicketingSystemBuilder addIdentification(Identification identification) {
         this.identification = identification;
         return this;
     }
 
+    @Override
     public TicketingSystemBuilder addPaymentTerminal(PaymentTerminal paymentTerminal) {
         this.paymentTerminal = paymentTerminal;
         return this;
     }
 
+    @Override
     public TicketingSystemBuilder addInternet(Internet internet) {
         this.internet = internet;
         return this;
     }
 
+    @Override
     public TicketingSystemBuilder addStorage(Storage storage) {
         this.storage = storage;
         return this;
     }
 
+    @Override
     public TicketingSystemBuilder addController(Controller controller) {
         this.controller = controller;
         return this;
     }
 
+    @Override
     public TicketingSystemBuilder addFrameWork(WebServer framework) {
         this.framework = framework;
         return this;
     }
 
+    @Override
     public ArrayList<String> build() {
         system.add(microController.addMicroController());
 

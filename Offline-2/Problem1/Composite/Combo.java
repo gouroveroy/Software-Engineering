@@ -48,12 +48,10 @@ public class Combo implements Menu {
         this.discountPercentage = discountPercentage;
     }
 
-    @Override
     public void add(Menu item, boolean isFree) {
         (isFree ? freeItems : items).add(item);
     }
 
-    @Override
     public void remove(Menu item) {
         if (!items.remove(item)) {
             freeItems.remove(item);

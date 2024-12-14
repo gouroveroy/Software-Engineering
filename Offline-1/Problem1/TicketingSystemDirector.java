@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 public class TicketingSystemDirector {
-    private TicketingSystemBuilder builder;
+    private Builder builder;
 
-    public TicketingSystemDirector(TicketingSystemBuilder builder) {
+    public TicketingSystemDirector(Builder builder) {
         this.builder = builder;
     }
 

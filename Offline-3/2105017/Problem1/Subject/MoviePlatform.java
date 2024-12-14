@@ -2,19 +2,19 @@ package Subject;
 
 import Observer.Observer;
 
-// import java.util.concurrent.ExecutorService;
-// import java.util.concurrent.Executors;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.List;
 import java.util.ArrayList;
 
 public class MoviePlatform implements Subject {
     private List<Observer> observers;
-    // private ExecutorService executorsService;
-    private List<String> genres;
+    private ExecutorService executorsService;
+    public List<String> genres;
 
     public MoviePlatform() {
         this.observers = new ArrayList<Observer>();
-        // this.executorsService = Executors.newCachedThreadPool();
+        this.executorsService = Executors.newCachedThreadPool();
         this.genres = new ArrayList<>();
     }
 
@@ -32,7 +32,8 @@ public class MoviePlatform implements Subject {
     public void notifyObservers(String movie, String genre) {
         for (Observer observer : observers) {
             if (observer.getFavoriteGenres().contains(genre)) {
-                new Thread(() -> observer.notify(movie, genre)).start();
+                // new Thread(() -> observer.notify(movie, genre)).start();
+                executorsService.execute(() -> observer.notify(movie, genre));
             }
         }
     }
@@ -62,7 +63,6 @@ public class MoviePlatform implements Subject {
     }
 
     public void close() {
-        // executorsService.shutdown();
-        // No need to shutdown ExecutorService
+        executorsService.shutdown();
     }
 }

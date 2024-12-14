@@ -34,23 +34,23 @@ public class DesiFlix {
             System.out.println("Enter a command (upload/remove/exit): ");
             String command = scanner.nextLine();
             if (command.equalsIgnoreCase("exit")) {
-            break;
+                break;
             }
             switch (command.toLowerCase()) {
-            case "upload":
-                System.out.println("Enter movie name: ");
-                String movieName = scanner.nextLine();
-                System.out.println("Enter genre: ");
-                String genre = scanner.nextLine();
-                moviePlatform.uploadMovie(movieName, genre);
-                break;
-            case "remove":
-                System.out.println("Enter genre to remove: ");
-                String genreToRemove = scanner.nextLine();
-                moviePlatform.removeGenre(genreToRemove);
-                break;
-            default:
-                System.out.println("Invalid command.");
+                case "upload":
+                    System.out.println("Enter movie name: ");
+                    String movieName = scanner.nextLine();
+                    System.out.println("Enter genre: ");
+                    String genre = scanner.nextLine();
+                    moviePlatform.uploadMovie(movieName, genre);
+                    break;
+                case "remove":
+                    System.out.println("Enter genre to remove: ");
+                    String genreToRemove = scanner.nextLine();
+                    moviePlatform.removeGenre(genreToRemove);
+                    break;
+                default:
+                    System.out.println("Invalid command.");
             }
         }
         scanner.close();
